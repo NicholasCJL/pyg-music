@@ -4,18 +4,17 @@ from typing import Dict, List, Tuple
 
 
 class BaseTuner(ABC):
-    chromatic_scale = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A',
-                       'A#', 'B']
-    chromatic_span = [f"{note}{octave}"
-                      for note in chromatic_scale
-                      for octave in range(9)]
-
     def __init__(self,
                  reference_note: str,
                  reference_freq: float):
         self.note_to_freq: Dict[str, Tuple[float, float, float]] = {}
         self.ref_note = reference_note
         self.ref_freq = reference_freq
+        chromatic_scale = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A',
+                           'A#', 'B']
+        self.chromatic_span = [f"{note}{octave}"
+                               for octave in range(9)
+                               for note in chromatic_scale]
 
     @abstractmethod
     def build_scales(self):
