@@ -6,9 +6,8 @@ class EqualTemperamentTuner(BaseTuner):
     def __init__(self,
                  reference_note: str,
                  reference_freq: float):
-        super().__init__()
-        self.ref_note = reference_note
-        self.ref_freq = reference_freq
+        super().__init__(reference_note=reference_note,
+                         reference_freq=reference_freq)
 
     def build_scales(self):
         step = 2 ** (1/12)

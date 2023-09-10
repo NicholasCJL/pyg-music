@@ -10,8 +10,12 @@ class BaseTuner(ABC):
                       for note in chromatic_scale
                       for octave in range(9)]
 
-    def __init__(self):
+    def __init__(self,
+                 reference_note: str,
+                 reference_freq: float):
         self.note_to_freq: Dict[str, Tuple[float, float, float]] = {}
+        self.ref_note = reference_note
+        self.ref_freq = reference_freq
 
     @abstractmethod
     def build_scales(self):
